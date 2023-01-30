@@ -1,15 +1,7 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
+import requests
 
 class Base:
-    def load(self):
-        self.browser.get(self.URL)
+    BASE_URL = "https://reqres.in/api"
 
-    def wait(self, *element):
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located(element)
-            )
-        except:
-            self.browser.quit()
+    def get_method(self, url):
+        return requests.get(url)
